@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\TypeRepository;
+use App\Repository\MotorisationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
- * @ORM\Entity(repositoryClass=TypeRepository::class)
+ *@ApiResource()
+ * @ORM\Entity(repositoryClass=MotorisationRepository::class)
  */
-class Type
+class Motorisation
 {
     /**
      * @ORM\Id
@@ -22,28 +22,16 @@ class Type
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $value;
+    private $label;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $label;
+    private $value;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getValue(): ?string
-    {
-        return $this->value;
-    }
-
-    public function setValue(string $value): self
-    {
-        $this->value = $value;
-
-        return $this;
     }
 
     public function getLabel(): ?string
@@ -54,6 +42,18 @@ class Type
     public function setLabel(string $label): self
     {
         $this->label = $label;
+
+        return $this;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
+    public function setValue(string $value): self
+    {
+        $this->value = $value;
 
         return $this;
     }
